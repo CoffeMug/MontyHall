@@ -16,7 +16,7 @@ public interface InputOutputI {
      * @param doors
      *            Total number of doors available in the game.
      * @return An integer containing the door number selected by the user.
-     * @throws InvalidInputException
+     * 
      */
     public int getPrimaryDoorNumber(int doors);
 
