@@ -62,8 +62,8 @@ public class ConsoleInputOutput implements InputOutput {
      */
     @Override
     public Door<?> offerChange(Door<?> primaryChoice, Door<?> nullChoice, int doors) {
-        System.out.println("You selected door number " + primaryChoice + ".\n");
-        System.out.println("Door number " + nullChoice + " is opened and is empty!\n");
+        System.out.println("You selected " + primaryChoice + ".\n");
+        System.out.println(nullChoice + " is opened and is empty!\n");
         System.out.println("You can keep your selection or change it.\n");
         System.out.println("Enter the final door number to see the results!");
         Door<?> choice = getDoor(scan, doors);
