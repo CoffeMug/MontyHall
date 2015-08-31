@@ -21,7 +21,6 @@ public class ConsoleInputOutput implements InputOutput {
      * @return Integer containing the door number primarily selected by the
      *         user.
      * 
-     * @throws InvalidInputException
      */
     @Override
     public Door<?> getPrimaryDoorNumber(int doors) {
@@ -59,7 +58,6 @@ public class ConsoleInputOutput implements InputOutput {
      *            Total number of doors available in the game.
      * 
      * @return integer containing the final door selected by the player.
-     * @throws InvalidInputException
      * 
      */
     @Override
@@ -111,7 +109,6 @@ public class ConsoleInputOutput implements InputOutput {
      * @param doors
      *            The total number of doors available in the game.
      * @return The door number selected by the player.
-     * @throws InvalidInputException
      */
     private Door<?> getDoor(Scanner scan, int doors) {
         int doorNumber = scan.nextInt();
