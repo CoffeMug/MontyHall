@@ -5,7 +5,7 @@ import java.util.Random;
 public class GameEngine {
 
     private final Random generator;
-    private final InputOutputI userInteraction;
+    private final InputOutput userInteraction;
     private final int DOORS = 3; // We assume there are only three doors
                                  // in the game.
 
@@ -17,13 +17,13 @@ public class GameEngine {
      *            Interface to deal with users input and output stuff.
      * @see getGameEngine
      */
-    private GameEngine(InputOutputI userInteraction) {
+    private GameEngine(InputOutput userInteraction) {
         this.generator = new Random();
         this.userInteraction = userInteraction;
     }
 
     // using factory method instead of calling constructor directly
-    public static GameEngine getGameEngine(InputOutputI userInteraction) {
+    public static GameEngine getGameEngine(InputOutput userInteraction) {
         GameEngine gameEngine = new GameEngine(userInteraction);
         return gameEngine;
     }
@@ -36,11 +36,11 @@ public class GameEngine {
      */
     public void playGame() {
         while (true) {
-            int userChoice = userInteraction.getPrimaryDoorNumber(DOORS);
-            int prizeDoor = generateRandomNumberInRange(DOORS);
-            int hostChoice = pickAnotherDoor(prizeDoor, userChoice);
-            int finalUserChoice = userInteraction.offerChange(userChoice, hostChoice, DOORS);
-            userInteraction.printGameResult(finalUserChoice == prizeDoor);
+            Door<?> userChoice = userInteraction.getPrimaryDoorNumber(DOORS);
+            Door<?> prizeDoor = generateRandomDoorInRange(DOORS);
+            Door<?> hostChoice = pickAnotherDoor(prizeDoor, userChoice);
+            Door<?> finalUserChoice = userInteraction.offerChange(userChoice, hostChoice, DOORS);
+            userInteraction.printGameResult(finalUserChoice.getDoor().equals(prizeDoor.getDoor()));
             if (!userInteraction.continueOrEndGame()) {
                 break;
             }
@@ -51,16 +51,18 @@ public class GameEngine {
      * Selects a door other than door1 and door2. Does this by keep generating a
      * random number until the requirement is met.
      * 
-     * @param door1
-     * @param door2
+     * @param prizeDoor
+     *            The door which has the prize behind.
+     * @param userChoice
+     *            The door which user has picked as first selection.
      * @return a door number other than door1 & door2
      */
-    private int pickAnotherDoor(int door1, int door2) {
-        int result;
+    private Door<Integer> pickAnotherDoor(Door<?> prizeDoor, Door<?> userChoice) {
+        Door<Integer> anotherDoor;
         do
-            result = generateRandomNumberInRange(DOORS);
-        while (result == door1 || result == door2);
-        return result;
+            anotherDoor = generateRandomDoorInRange(DOORS);
+        while (anotherDoor.getDoor().equals(prizeDoor.getDoor()) || anotherDoor.getDoor().equals(userChoice.getDoor()));
+        return anotherDoor;
     }
 
     /**
@@ -71,8 +73,11 @@ public class GameEngine {
      *            Total number of doors available in the game.
      * @return A random door number.
      */
-    public int generateRandomNumberInRange(int range) {
-        return generator.nextInt(range) + 1;
+    public Door<Integer> generateRandomDoorInRange(int range) {
+        int randomNumber = generator.nextInt(range) + 1;
+        Door<Integer> randomDoor = new Door<Integer>();
+        randomDoor.setDoor(randomNumber);
+        return randomDoor;
     }
 
 }

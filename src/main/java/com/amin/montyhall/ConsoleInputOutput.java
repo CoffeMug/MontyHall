@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Amin
  *
  */
-public class ConsoleInputOutput implements InputOutputI {
+public class ConsoleInputOutput implements InputOutput {
 
     private Scanner scan = new Scanner(System.in);
 
@@ -24,9 +24,9 @@ public class ConsoleInputOutput implements InputOutputI {
      * @throws InvalidInputException
      */
     @Override
-    public int getPrimaryDoorNumber(int doors) {
+    public Door<?> getPrimaryDoorNumber(int doors) {
         doorSelectionMenu();
-        int doorNumber = getDoor(scan, doors);
+        Door<?> doorNumber = getDoor(scan, doors);
         return doorNumber;
     }
 
@@ -63,12 +63,12 @@ public class ConsoleInputOutput implements InputOutputI {
      * 
      */
     @Override
-    public int offerChange(int primaryChoice, int nullChoice, int doors) {
+    public Door<?> offerChange(Door<?> primaryChoice, Door<?> nullChoice, int doors) {
         System.out.println("You selected door number " + primaryChoice + ".\n");
         System.out.println("Door number " + nullChoice + " is opened and is empty!\n");
         System.out.println("You can keep your selection or change it.\n");
         System.out.println("Enter the final door number to see the results!");
-        int choice = getDoor(scan, doors);
+        Door<?> choice = getDoor(scan, doors);
         return choice;
     }
 
@@ -113,14 +113,16 @@ public class ConsoleInputOutput implements InputOutputI {
      * @return The door number selected by the player.
      * @throws InvalidInputException
      */
-    private int getDoor(Scanner scan, int doors) {
+    private Door<?> getDoor(Scanner scan, int doors) {
         int doorNumber = scan.nextInt();
 
         while ((doorNumber < 1) || (doorNumber > doors)) {
             System.out.println("Please pick a valid door number!");
             doorNumber = scan.nextInt();
         }
-        return doorNumber;
+        Door<Integer> door = new Door<Integer>();
+        door.setDoor(doorNumber);
+        return door;
     }
 
 }

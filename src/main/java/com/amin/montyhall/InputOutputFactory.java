@@ -8,7 +8,7 @@ package com.amin.montyhall;
  *
  */
 public class InputOutputFactory {
-    public InputOutputI getInputOutput() {
+    public InputOutput getInputOutput() {
         return new ConsoleInputOutput();
     }
 }

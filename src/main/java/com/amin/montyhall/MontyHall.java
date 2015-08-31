@@ -9,7 +9,7 @@ package com.amin.montyhall;
 public class MontyHall {
 
     public static void main(String[] args) {
-        InputOutputI userInteraction = new InputOutputFactory().getInputOutput();
+        InputOutput userInteraction = new InputOutputFactory().getInputOutput();
         GameEngine montyHall = GameEngine.getGameEngine(userInteraction);
         montyHall.playGame();
     }

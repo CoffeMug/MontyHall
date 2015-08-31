@@ -8,7 +8,7 @@ package com.amin.montyhall;
  * @author Amin
  *
  */
-public interface InputOutputI {
+public interface InputOutput {
 
     /**
      * Get the primary door number selected first by player.
@@ -18,7 +18,7 @@ public interface InputOutputI {
      * @return An integer containing the door number selected by the user.
      * @throws InvalidInputException
      */
-    public int getPrimaryDoorNumber(int doors);
+    public Door<?> getPrimaryDoorNumber(int doors);
 
     /**
      * Specification of the output printer.
@@ -47,6 +47,6 @@ public interface InputOutputI {
      *            Total number of doors available in the game.
      * @return Door number as final selection of the player.
      */
-    public int offerChange(int primaryChoice, int emptyChoice, int doors);
+    public Door<?> offerChange(Door<?> primaryChoice, Door<?> emptyChoice, int doors);
 
 }
