@@ -21,8 +21,8 @@ public class MontyHall {
      */
     private static void playGame(InputOutput userInteraction, ConcreteDoor door) {
         while (true) {
-            ConcreteDoor userChoice = userInteraction.getPrimaryDoorNumber(DOORS);
             ConcreteDoor prizeDoor = door.generateRandomDoorInRange(DOORS);
+            ConcreteDoor userChoice = userInteraction.getPrimaryDoorNumber(DOORS);
             ConcreteDoor hostChoice = door.pickAnotherDoor(prizeDoor, userChoice, DOORS);
             ConcreteDoor finalUserChoice = userInteraction.offerChange(userChoice, hostChoice, DOORS);
             userInteraction.showGameResult(finalUserChoice.getDoor().equals(prizeDoor.getDoor()));

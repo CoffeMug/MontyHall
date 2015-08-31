@@ -24,7 +24,7 @@ public class ConsoleInputOutput implements InputOutput {
      */
     @Override
     public ConcreteDoor getPrimaryDoorNumber(int doors) {
-        doorSelectionMenu();
+        doorSelectionMenu(doors);
         ConcreteDoor doorNumber = getDoor(scan, doors);
         return doorNumber;
     }
@@ -95,9 +95,12 @@ public class ConsoleInputOutput implements InputOutput {
     /**
      * Tiny method which is responsible to printout the door selection menu.
      */
-    private void doorSelectionMenu() {
+    private void doorSelectionMenu(int doors) {
         System.out.println("Please select a door number: \n");
-        System.out.println("1     2     3");
+        for (int i=1; i <= doors; i++) {
+            System.out.print(i + "   ");
+	}
+        System.out.println("");
     }
 
     /**
