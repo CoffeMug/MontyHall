@@ -15,7 +15,7 @@ public interface InputOutput {
      * 
      * @param doors
      *            Total number of doors available in the game.
-     * @return An integer containing the door number selected by the user.
+     * @return A door which is the first one selected by the user.
      * 
      */
     public Door<?> getPrimaryDoorNumber(int doors);
@@ -45,7 +45,7 @@ public interface InputOutput {
      *            The door that host opens and is empty.
      * @param doors
      *            Total number of doors available in the game.
-     * @return Door number as final selection of the player.
+     * @return Door as final selection of the player.
      */
     public Door<?> offerChange(Door<?> primaryChoice, Door<?> emptyChoice, int doors);
 
