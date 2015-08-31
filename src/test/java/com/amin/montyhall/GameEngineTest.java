@@ -12,10 +12,8 @@ public class GameEngineTest {
     @Test
     public void testGenerateRandomNumberInRange() {
 
-        InputOutput userInteraction = new InputOutputFactory().getInputOutput();
-        GameEngine testGameEngine = GameEngine.getGameEngine(userInteraction);
-
-        Door<Integer> randomNum = testGameEngine.generateRandomDoorInRange(RANGE);
+        ConcreteDoor door = ConcreteDoor.createDoor();
+        ConcreteDoor randomNum = (ConcreteDoor) door.generateRandomDoorInRange(RANGE);
 
         assertTrue("Error, generated random number out of range", RANGE >= randomNum.getDoor());
         assertTrue("Error, generated random number out of range", 1 <= randomNum.getDoor());
@@ -24,9 +22,8 @@ public class GameEngineTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGenerateRandomNumberInvalidRange() {
 
-        InputOutput userInteraction = new InputOutputFactory().getInputOutput();
-        GameEngine testGameEngine = GameEngine.getGameEngine(userInteraction);
-        testGameEngine.generateRandomDoorInRange(INVALIDRANGE);
+        ConcreteDoor door = ConcreteDoor.createDoor();
+        door.generateRandomDoorInRange(INVALIDRANGE);
 
     }
 

@@ -9,7 +9,7 @@ package com.amin.montyhall;
  * @param <T>
  *            Generic door type. It can be integer or String for example.
  */
-public class Door<T> {
+public abstract class Door<T> {
 
     private T door;
 
@@ -21,9 +21,7 @@ public class Door<T> {
         this.door = door;
     }
 
-    @Override
-    public String toString() {
-        return "Door " + this.door.toString();
-    }
+    public abstract ConcreteDoor pickAnotherDoor(ConcreteDoor prizeDoor, ConcreteDoor userChoice);
 
+    public abstract ConcreteDoor generateRandomDoorInRange(int range);
 }

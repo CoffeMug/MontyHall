@@ -23,9 +23,9 @@ public class ConsoleInputOutput implements InputOutput {
      * 
      */
     @Override
-    public Door<?> getPrimaryDoorNumber(int doors) {
+    public ConcreteDoor getPrimaryDoorNumber(int doors) {
         doorSelectionMenu();
-        Door<?> doorNumber = getDoor(scan, doors);
+        ConcreteDoor doorNumber = getDoor(scan, doors);
         return doorNumber;
     }
 
@@ -61,12 +61,12 @@ public class ConsoleInputOutput implements InputOutput {
      * 
      */
     @Override
-    public Door<?> offerChange(Door<?> primaryChoice, Door<?> nullChoice, int doors) {
+    public ConcreteDoor offerChange(ConcreteDoor primaryChoice, ConcreteDoor nullChoice, int doors) {
         System.out.println("You selected " + primaryChoice + ".\n");
         System.out.println(nullChoice + " is opened and is empty!\n");
         System.out.println("You can keep your selection or change it.\n");
         System.out.println("Enter the final door number to see the results!");
-        Door<?> choice = getDoor(scan, doors);
+        ConcreteDoor choice = getDoor(scan, doors);
         return choice;
     }
 
@@ -110,14 +110,14 @@ public class ConsoleInputOutput implements InputOutput {
      *            The total number of doors available in the game.
      * @return The door number selected by the player.
      */
-    private Door<?> getDoor(Scanner scan, int doors) {
+    private ConcreteDoor getDoor(Scanner scan, int doors) {
         int doorNumber = scan.nextInt();
 
         while ((doorNumber < 1) || (doorNumber > doors)) {
             System.out.println("Please pick a valid door number!");
             doorNumber = scan.nextInt();
         }
-        Door<Integer> door = new Door<Integer>();
+        ConcreteDoor door = ConcreteDoor.createDoor();
         door.setDoor(doorNumber);
         return door;
     }

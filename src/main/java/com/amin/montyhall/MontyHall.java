@@ -9,8 +9,8 @@ package com.amin.montyhall;
 public class MontyHall {
 
     public static void main(String[] args) {
-        InputOutput userInteraction = new InputOutputFactory().getInputOutput();
-        GameEngine montyHall = GameEngine.getGameEngine(userInteraction);
+        GameEngine montyHall = GameEngine.getGameEngine(new InputOutputFactory().getInputOutput(),
+                ConcreteDoor.createDoor());
         montyHall.playGame();
     }
 }

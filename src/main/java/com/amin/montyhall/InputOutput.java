@@ -18,7 +18,7 @@ public interface InputOutput {
      * @return A door which is the first one selected by the user.
      * 
      */
-    public Door<?> getPrimaryDoorNumber(int doors);
+    public ConcreteDoor getPrimaryDoorNumber(int doors);
 
     /**
      * Specification of the output printer.
@@ -47,6 +47,6 @@ public interface InputOutput {
      *            Total number of doors available in the game.
      * @return Door as final selection of the player.
      */
-    public Door<?> offerChange(Door<?> primaryChoice, Door<?> emptyChoice, int doors);
+    public ConcreteDoor offerChange(ConcreteDoor primaryChoice, ConcreteDoor emptyChoice, int doors);
 
 }

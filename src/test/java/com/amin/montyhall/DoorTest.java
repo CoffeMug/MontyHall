@@ -8,20 +8,10 @@ public class DoorTest {
 
     @Test
     public void testToStringIntegerDoor() {
-        Door<Integer> sampleDoor = new Door<>();
+        ConcreteDoor sampleDoor = ConcreteDoor.createDoor();
         sampleDoor.setDoor(2);
 
-        assertTrue("The two strings are the same", sampleDoor.toString().equals("Door 2"));
-
-    }
-    
-    @Test
-    public void testToStringStringDoor() {
-        Door<String> sampleDoor = new Door<>();
-        sampleDoor.setDoor("3");
-        
-        assertFalse("The two strings are not the same", sampleDoor.toString().equals("Door 2"));
-        assertTrue("The two strings are the same", sampleDoor.toString().equals("Door 3"));
-
+        assertTrue("The two strings are not the same", sampleDoor.toString().equals("Door 2"));
+        assertFalse("The two strings are the same", sampleDoor.toString().equals(2));
     }
 }
