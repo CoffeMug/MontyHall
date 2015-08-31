@@ -27,11 +27,11 @@ public class ConcreteDoor extends Door<Integer> {
      * @return a door number other than door1 & door2
      */
     @Override
-    public ConcreteDoor pickAnotherDoor(ConcreteDoor prizeDoor, ConcreteDoor userChoice) {
+    public ConcreteDoor pickAnotherDoor(ConcreteDoor prizeDoor, ConcreteDoor userChoice, int doors) {
 
         ConcreteDoor anotherDoor = ConcreteDoor.createDoor();
         do
-            anotherDoor = generateRandomDoorInRange(GameEngine.getDOORS());
+            anotherDoor = generateRandomDoorInRange(doors);
         while (anotherDoor.getDoor().equals(prizeDoor.getDoor()) || anotherDoor.getDoor().equals(userChoice.getDoor()));
         return anotherDoor;
     }
@@ -51,7 +51,7 @@ public class ConcreteDoor extends Door<Integer> {
         randomDoor.setDoor(randomNumber);
         return randomDoor;
     }
-    
+
     @Override
     public String toString() {
         return "Door " + super.getDoor().toString();

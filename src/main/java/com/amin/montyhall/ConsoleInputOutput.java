@@ -36,7 +36,7 @@ public class ConsoleInputOutput implements InputOutput {
      *            The final result of the game - win(true) or loose(false).
      */
     @Override
-    public void printGameResult(boolean result) {
+    public void showGameResult(boolean result) {
 
         if (result) {
             System.out.println("Congratulations! You won. :-)\n");

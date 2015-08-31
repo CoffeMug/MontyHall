@@ -26,7 +26,7 @@ public interface InputOutput {
      * @param result
      *            Boolean representing the final game result (win or loose).
      */
-    public void printGameResult(boolean result);
+    public void showGameResult(boolean result);
 
     /**
      * Infinite loop asking player to continue the game or to quit.

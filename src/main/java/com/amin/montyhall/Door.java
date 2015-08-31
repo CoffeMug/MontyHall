@@ -21,7 +21,7 @@ public abstract class Door<T> {
         this.door = door;
     }
 
-    public abstract ConcreteDoor pickAnotherDoor(ConcreteDoor prizeDoor, ConcreteDoor userChoice);
+    public abstract ConcreteDoor pickAnotherDoor(ConcreteDoor prizeDoor, ConcreteDoor userChoice, int doors);
 
     public abstract ConcreteDoor generateRandomDoorInRange(int range);
 }
